@@ -18,12 +18,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-left">
                 <%#= params.inspect %>
-                <li> <%= link_to("团队", "/") %> </li>
-                <% if params[:controller] == "projects" or params[:controller] == "events" or params[:id].present? %>
-                  <li> <%= link_to("项目", team_path(@team)) %> </li>
-                  <li><%= link_to("动态", team_events_path(@team)) %> </li>
+                <li> <%#= link_to("团队", "/") %> </li>
+                <%# if params[:controller] == "projects" or params[:controller] == "events" or params[:id].present? %>
+                  <li> <%#= link_to("项目", team_path(@team)) %> </li>
+                  <li><%#= link_to("动态", team_events_path(@team)) %> </li>
 
-                <% end %>
+                <%# end %>
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
@@ -34,16 +34,12 @@
             <% else %>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Hi!,<% if current_user.user_name? %>
-                    <%= current_user.user_name %>
-                    <% else %>
-                    <%= current_user.email %>
-                    <% end %>
+                        Hi! <%= current_user.email %>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <%= link_to("团队列表", teams_path) %>
+                            <%#= link_to("团队列表", teams_path) %>
                         </li>
                         <li>
                             <%= link_to("退出", destroy_user_session_path, method: :delete) %>
