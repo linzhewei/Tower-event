@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TowerEvent</title>
+    <title>Tower</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= render partial: "common/navbar" %>
+      <%= render partial: "common/flahses" %>
+      <%= yield %>
+      <%= render partial: "common/footer" %>
+    </div>
   </body>
 </html>
