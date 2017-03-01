@@ -38,7 +38,7 @@ class TodosController < ApplicationController
   def destroy
     @todo = todo
     @todo.destroy
-    flash[:danger] = "成功删除任务"
+    flash[:alert] = "成功删除任务"
     redirect_to team_project_path(@team, @project)
   end
 

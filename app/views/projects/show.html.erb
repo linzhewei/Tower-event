@@ -24,7 +24,8 @@
             <th></th>
             <th></th>
             <th>
-              <%= link_to("编辑", edit_team_project_todo_path(@team, @project, todo), class:"btn btn-danger btn-xs") %>
+              <%= link_to("编辑", edit_team_project_todo_path(@team, @project, todo), class:"btn btn-default btn-xs") %>
+              <%= link_to("删除", team_project_todo_path(@team, @project, todo), method: :delete, data: { confirm: "你确认要删除这条任务吗？"}, class:"btn btn-danger btn-xs") %>
             </th>
           </tr>
         <% end %>
