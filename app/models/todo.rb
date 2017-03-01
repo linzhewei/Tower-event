@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: projects
+# Table name: todos
 #
 #  id          :integer          not null, primary key
-#  name        :string
+#  title       :string
+#  description :string
 #  user_id     :integer
-#  team_id     :integer
-#  description :text
+#  project_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
-class Project < ApplicationRecord
-  validates :name, presence: true
-  belongs_to :team
+class Todo < ApplicationRecord
+  validates :title, presence: true
+  belongs_to :project
   belongs_to :user
-  has_many :todos
 end

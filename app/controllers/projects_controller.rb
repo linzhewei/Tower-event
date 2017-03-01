@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = @team.projects.find(params[:id])
+    @todos = @project.todos.all
   end
 
   def new
