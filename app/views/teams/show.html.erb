@@ -6,8 +6,8 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
-      <%= link_to("新建项目","#",class:"btn btn-primary btn-xs pull-right") %>
-      <%= link_to("团队成员","#",class:"btn btn-primary btn-xs pull-right") %>
+      <%= link_to("新建项目", new_team_project_path(@team), class:"btn btn-primary btn-xs pull-right") %>
+      <%= link_to("团队成员", "#", class:"btn btn-primary btn-xs pull-right") %>
         <tr>
             <th>项目名称</th>
             <th>创建时间</th>
@@ -17,8 +17,8 @@
         <% @projects.each do |project| %>
         <tr>
             <td><%= link_to(project.name, "#") %></td>
-            <td><%= project.created_at %></td>
-            <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+            <td><%= project.created_at.strftime("%Y-%m-%d %R") %></td>
+            <td><%= link_to("进入项目", team_project_path(project.team, project), class:"btn btn-info btn-xs") %></td>
         </tr>
         <% end %>
     </table>

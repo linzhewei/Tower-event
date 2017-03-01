@@ -47,6 +47,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'annotate'
   gem "better_errors"
+  gem "binding_of_caller"
   gem 'rspec-rails', '~> 3.5.2'
   gem 'rails-controller-testing', '~> 1.0.1'
 end
