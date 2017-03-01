@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+    <table class="table table-striped custab">
+    <thead>
+      <%= link_to("新建团队",new_team_path,class:"btn btn-primary btn-xs pull-right") %>
+        <tr>
+            <th>团队名称</th>
+            <th class="text-center"></th>
+        </tr>
+    </thead>
+        <% @teams.each do |team| %>
+        <tr>
+            <td><%= link_to(team.name, team_path(team)) %></td>
+            <td class="text-center">
+            <%= link_to("进入团队", team_path(team), class:"btn btn-info btn-xs glyphicon glyphicon-star") %>
+            <%= link_to("团队动态","#", class:"btn btn-danger btn-xs glyphicon glyphicon-user") %>  
+            </td>
+        </tr>
+        <% end %>
+    </table>
+    </div>
+</div>
