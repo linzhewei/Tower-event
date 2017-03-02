@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   root "teams#index"
 
   resources :teams, only: [:index, :new, :show, :create] do
+    member do
+      post :join
+      post :quit
+      get :all_members
+    end
     resources :projects, only: [:show, :new, :create] do
       resources :todos do
         member do
