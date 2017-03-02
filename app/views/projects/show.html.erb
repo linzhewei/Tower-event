@@ -27,7 +27,7 @@
               <% if current_user %>
                 <%= render_todo_finish(@team, @project, todo) %>
                 <%= render_todo_reopen(@team, @project, todo) %>
-                <%= render_todo_comment(todo) %>
+                <%= render_todo_comment(@team, @project, todo) %>
                 <%= render_todo_delete(@team, @project, todo) %>
                 <%= render_todo_edit(@team, @project, todo) %>
                 <%= render_todo_run(@team, @project, todo) %>

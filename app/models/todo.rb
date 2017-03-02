@@ -9,12 +9,14 @@
 #  project_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  aasm_state  :string           default("created")
 #
 
 class Todo < ApplicationRecord
   validates :title, presence: true
   belongs_to :project
   belongs_to :user
+  has_many :comments
 
   include AASM
 

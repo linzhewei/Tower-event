@@ -24,9 +24,9 @@ module TodosHelper
     end
   end
 
-  def render_todo_comment(todo)
+  def render_todo_comment(team, project, todo)
     unless todo.aasm_state == "deleted"
-      link_to "添加评论", "#", class:"btn btn-xs btn-default"
+      link_to "添加评论", new_team_project_todo_comment_path(team, project, todo), class:"btn btn-xs btn-default"
     end
   end
 

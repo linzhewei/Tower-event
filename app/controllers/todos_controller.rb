@@ -4,6 +4,7 @@ class TodosController < ApplicationController
   before_action :find_todo, except: [:new, :create]
   def show
     @todo = todo
+    @comments = @todo.comments.all
   end
 
   def new

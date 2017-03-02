@@ -13,6 +13,7 @@ Rails.application.routes.draw do
           post :reopen
           post :recover
         end
+        resources :comments, only: [:new, :create]
       end
     end
   end

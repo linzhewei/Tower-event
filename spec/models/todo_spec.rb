@@ -9,6 +9,7 @@
 #  project_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  aasm_state  :string           default("created")
 #
 
 require 'rails_helper'
