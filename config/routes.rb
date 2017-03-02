@@ -4,7 +4,16 @@ Rails.application.routes.draw do
 
   resources :teams, only: [:index, :new, :show, :create] do
     resources :projects, only: [:show, :new, :create] do
-      resources :todos
+      resources :todos do
+        member do
+          post :run
+          post :pause
+          post :finish
+          post :delete
+          post :reopen
+          post :recover
+        end
+      end
     end
   end
 end

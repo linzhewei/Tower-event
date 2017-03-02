@@ -20,12 +20,20 @@
           <tr>
             <th><%= todo.title  %></th>
             <th><%= todo.description %></th>
-            <th></th>
+            <th><%= render_todo_state(todo) %></th>
             <th></th>
             <th></th>
             <th>
-              <%= link_to("编辑", edit_team_project_todo_path(@team, @project, todo), class:"btn btn-default btn-xs") %>
-              <%= link_to("删除", team_project_todo_path(@team, @project, todo), method: :delete, data: { confirm: "你确认要删除这条任务吗？"}, class:"btn btn-danger btn-xs") %>
+              <% if current_user %>
+                <%= render_todo_finish(@team, @project, todo) %>
+                <%= render_todo_reopen(@team, @project, todo) %>
+                <%= render_todo_comment(todo) %>
+                <%= render_todo_delete(@team, @project, todo) %>
+                <%= render_todo_edit(@team, @project, todo) %>
+                <%= render_todo_run(@team, @project, todo) %>
+                <%= render_todo_pause(@team, @project, todo) %>
+                <%= render_todo_recover(@team, @project, todo) %>
+              <% end %>
             </th>
           </tr>
         <% end %>
