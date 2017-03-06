@@ -67,4 +67,12 @@ module TodosHelper
       todo.assignee
     end
   end
+
+  def render_todo_deadline(todo)
+    if todo.deadline.blank?
+      "未设置完成时间"
+    else
+      todo.deadline
+    end
+  end
 end

@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  aasm_state  :string           default("created")
 #  assignee    :string           default("未指派")
+#  deadline    :datetime
 #
 
 require 'rails_helper'

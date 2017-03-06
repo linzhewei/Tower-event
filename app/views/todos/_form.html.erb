@@ -2,9 +2,8 @@
   <div class="form-group">
     <%= f.input :title, label: "任务内容", input_html: { class: "form-control" } %>
     <%= f.input :description, label: "任务描述", input_html: { class: "form-control" } %>
-    <!-- fixme! -->
     <%= f.input :assignee, label: "指派给", :collection => @team.members.to_a.pluck(:email) %>
-    <%= f.input :description, label: "截止日期" %>
+    <%= f.input :deadline, label: "截止日期", as: :date, html5: true %>
   </div>
   <% if ["new", "create"].include?(controller.action_name) %>
     <%= f.submit "添加任务", class: "btn btn-primary", data: { disable_with: "添加中..." } %>
