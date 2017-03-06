@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  aasm_state  :string           default("created")
+#  assignee    :string           default("未指派")
 #
 
 class Todo < ApplicationRecord

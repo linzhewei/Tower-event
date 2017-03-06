@@ -21,7 +21,7 @@
             <th><%= todo.title  %></th>
             <th><%= todo.description %></th>
             <th><%= render_todo_state(todo) %></th>
-            <th></th>
+            <th><%= render_todo_assignee(todo) %></th>
             <th></th>
             <th>
               <% if current_user %>

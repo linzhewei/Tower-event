@@ -60,4 +60,11 @@ module TodosHelper
     end
   end
 
+  def render_todo_assignee(todo)
+    if todo.assignee.blank?
+      "未指派"
+    else
+      todo.assignee
+    end
+  end
 end
