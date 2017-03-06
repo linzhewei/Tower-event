@@ -16,9 +16,11 @@
 
 class Todo < ApplicationRecord
   validates :title, presence: true
+  validate :deadline_need_after_time_now
   belongs_to :project
   belongs_to :user
   has_many :comments
+
 
   include AASM
 
@@ -50,4 +52,11 @@ class Todo < ApplicationRecord
       transitions :from => :deleted, :to => :created
     end
   end
+
+  def deadline_need_after_time_now
+    if deadline < Time.zone.now
+      self.errors.add(:deadline, :deadline_need_after_time_now)
+    end
+  end
+
 end

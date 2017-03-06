@@ -18,7 +18,7 @@
     </thead>
         <% @todos.each do |todo| %>
           <tr>
-            <th><%= todo.title  %></th>
+            <th><%= link_to(todo.title, team_project_todo_path(@team, @project, todo)) %></th>
             <th><%= todo.description %></th>
             <th><%= render_todo_state(todo) %></th>
             <th><%= render_todo_assignee(todo) %></th>
