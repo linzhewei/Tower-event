@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_team_id
+  before_action :require_is_project_member, only: [:show, :all_members]
 
   def show
     @project = @team.projects.find(params[:id])
@@ -36,7 +37,7 @@ class ProjectsController < ApplicationController
   end
 
   def quit
-    @project = @team.project.find(params[:id])
+    @project = @team.projects.find(params[:id])
 
     if current_user.is_member_of_project?(@project)
       current_user.quit_project!(@project)
@@ -57,6 +58,13 @@ class ProjectsController < ApplicationController
 
   def find_team_id
     @team = Team.find(params[:team_id])
+  end
+
+  def require_is_project_member
+    if !current_user.is_member_of_project?(Project.find(params[:id]))
+      redirect_to root_path
+      flash[:notice] = "暂无权限"
+    end
   end
 
   private

@@ -45,15 +45,15 @@ class User < ApplicationRecord
     participated_projects.delete(project)
   end
 
-  def is_member_of?(team)
+  def is_member_of_team?(team)
     participated_teams.include?(team)
   end
 
-  def join!(team)
+  def join_team!(team)
     participated_teams << team
   end
 
-  def quit!(team)
+  def quit_team!(team)
     participated_teams.delete(team)
   end
 end

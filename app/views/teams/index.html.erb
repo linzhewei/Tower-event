@@ -10,9 +10,9 @@
     </thead>
         <% @teams.each do |team| %>
         <tr>
-            <td><%= link_to(team.name, team_path(team)) %></td>
+            <td><%= render_team_name(current_user, team) %></td>
             <td class="text-center">
-            <% if current_user.is_member_of?(team) %>
+            <% if current_user.is_member_of_team?(team) %>
               <%= link_to("进入团队", team_path(team), class:"btn btn-info btn-xs glyphicon glyphicon-star") %>
               <%= link_to("团队动态","#", class:"btn btn-danger btn-xs glyphicon glyphicon-user") %>
             <% end %>
