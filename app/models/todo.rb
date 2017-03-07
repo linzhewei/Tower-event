@@ -16,7 +16,7 @@
 
 class Todo < ApplicationRecord
   validates :title, presence: true
-  validate :deadline_need_after_time_now
+  # validate :deadline_need_after_time_now
   belongs_to :project
   belongs_to :user
   has_many :comments
@@ -53,10 +53,12 @@ class Todo < ApplicationRecord
     end
   end
 
-  def deadline_need_after_time_now
-    if deadline < Time.zone.now
-      self.errors.add(:deadline, :deadline_need_after_time_now)
-    end
-  end
+  # def deadline_need_after_time_now
+  #   if deadline.present?
+  #     if deadline < created_at
+  #       self.errors.add(:deadline, :deadline_need_after_time_now)
+  #     end
+  #   end
+  # end
 
 end
