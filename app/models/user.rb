@@ -30,6 +30,20 @@ class User < ApplicationRecord
 
   has_many :team_relationships
   has_many :participated_teams, through: :team_relationships, source: :team
+  has_many :project_relationships
+  has_many :participated_projects, through: :project_relationships, source: :project
+
+  def is_member_of_project?(project)
+    participated_projects.include?(project)
+  end
+
+  def join_project!(project)
+    participated_projects << project
+  end
+
+  def quit_project!(project)
+    participated_projects.delete(project)
+  end
 
   def is_member_of?(team)
     participated_teams.include?(team)

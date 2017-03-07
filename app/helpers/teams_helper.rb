@@ -1,9 +1,9 @@
 module TeamsHelper
-  def render_member_or_not(user, team)
+  def render_team_member_or_not(user, team)
     if current_user && user.is_member_of?(team)
-      content_tag(:span, "团队成员", class:"label label-success")
+      content_tag(:span, "团队成员", class:"label label-success pull-right")
     else
-      content_tag(:span, "不是团队成员", class:"label label-warning")
+      content_tag(:span, "不是团队成员", class:"label label-warning pull-right")
     end
   end
 
@@ -15,7 +15,7 @@ module TeamsHelper
     end
   end
 
-  def render_all_members(user, team)
+  def render_all_team_members(user, team)
     if current_user && user.is_member_of?(team)
       link_to "所有成员", all_members_team_path(team), class:"btn btn-xs btn-primary pull-right"
     end

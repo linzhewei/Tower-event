@@ -16,4 +16,7 @@ class Project < ApplicationRecord
   belongs_to :team
   belongs_to :user
   has_many :todos
+
+  has_many :project_relationships
+  has_many :project_members, through: :project_relationships, source: :user
 end

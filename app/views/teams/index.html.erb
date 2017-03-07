@@ -5,15 +5,19 @@
       <%= link_to("新建团队",new_team_path,class:"btn btn-primary btn-xs pull-right") %>
         <tr>
             <th>团队名称</th>
-            <th class="text-center"></th>
+            <th></th>
         </tr>
     </thead>
         <% @teams.each do |team| %>
         <tr>
             <td><%= link_to(team.name, team_path(team)) %></td>
             <td class="text-center">
-            <%= link_to("进入团队", team_path(team), class:"btn btn-info btn-xs glyphicon glyphicon-star") %>
-            <%= link_to("团队动态","#", class:"btn btn-danger btn-xs glyphicon glyphicon-user") %>
+            <% if current_user.is_member_of?(team) %>
+              <%= link_to("进入团队", team_path(team), class:"btn btn-info btn-xs glyphicon glyphicon-star") %>
+              <%= link_to("团队动态","#", class:"btn btn-danger btn-xs glyphicon glyphicon-user") %>
+            <% end %>
+            <%= render_join_or_quit_team(current_user, team) %>
+            <%= render_team_member_or_not(current_user, team) %>
             </td>
         </tr>
         <% end %>

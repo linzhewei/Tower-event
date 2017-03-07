@@ -7,6 +7,7 @@
     <table class="table table-striped custab">
     <thead>
       <%= link_to("新建任务", new_team_project_todo_path(@team, @project), class:"btn btn-primary btn-xs pull-right") %>
+      <%= render_all_project_members(current_user, @team, @project) %>
         <tr>
             <th>任务名称</th>
             <th>任务描述</th>

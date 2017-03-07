@@ -7,21 +7,25 @@
     <table class="table table-striped custab">
     <thead>
       <%= link_to("新建项目", new_team_project_path(@team), class:"btn btn-xs btn-primary pull-right") %>
-      <%= render_all_members(current_user, @team) %>
-      <%= render_member_or_not(current_user, @team) %>
-      <%= render_join_or_quit_team(current_user, @team) %>
+      <%= render_all_team_members(current_user, @team) %>
 
         <tr>
             <th>项目名称</th>
             <th>创建时间</th>
-            <th class="text-center"></th>
+            <th></th>
         </tr>
     </thead>
         <% @projects.each do |project| %>
         <tr>
             <td><%= link_to(project.name, team_project_path(project.team, project)) %></td>
             <td><%= project.created_at.strftime("%Y-%m-%d %R") %></td>
-            <td><%= link_to("进入项目", team_project_path(project.team, project), class:"btn btn-info btn-xs") %></td>
+            <td>
+              <% if current_user.is_member_of_project?(project) %>
+                <%= link_to("进入项目", team_project_path(project.team, project), class:"btn btn-info btn-xs") %>
+              <% end %>
+              <%= render_join_or_quit_project(current_user, @team, project) %>
+              <%= render_project_member_or_not(current_user, project) %>
+            </td>
         </tr>
         <% end %>
     </table>

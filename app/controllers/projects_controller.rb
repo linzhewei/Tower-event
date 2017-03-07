@@ -22,6 +22,37 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def join
+    @project = @team.projects.find(params[:id])
+
+    if !current_user.is_member_of_project?(@project)
+      current_user.join_project!(@project)
+      flash[:notice] = "成功加入项目"
+    else
+      flash[:notice] = "你已经是项目成员"
+    end
+
+    redirect_to :back
+  end
+
+  def quit
+    @project = @team.project.find(params[:id])
+
+    if current_user.is_member_of_project?(@project)
+      current_user.quit_project!(@project)
+      flash[:notice] = "已退出该项目"
+    else
+      flash[:notice] = "不是成员，无法退出"
+    end
+
+    redirect_to :back
+  end
+
+  def all_members
+    @project = @team.projects.find(params[:id])
+    @members = @project.project_members.all
+  end
+
   protected
 
   def find_team_id

@@ -9,6 +9,11 @@ Rails.application.routes.draw do
       get :all_members
     end
     resources :projects, only: [:show, :new, :create] do
+      member do
+        post :join
+        post :quit
+        get :all_members
+      end
       resources :todos do
         member do
           post :run
